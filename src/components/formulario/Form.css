@@ -2,7 +2,9 @@
     margin-top: 15px;
     padding: 5px 10px 10px 10px ;
     background-color: #343a40;
-    border-radius: 10px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
     color: white;
     font-size: 18px;
+    position: sticky;
 }

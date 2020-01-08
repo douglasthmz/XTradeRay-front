@@ -1,4 +1,16 @@
-#global, body{
-    background-color: #A9AAB1;
+html, body{
+    background: linear-gradient(135deg, rgba(0,0,0,0.35) 0,rgba(0,0,0,0.15) 3px);
+    background-size: 5px 5px;
     height: 100%;
+}
+#root{
+    height: 100%;
+}
+nav.navbar>div.container{
+    justify-content: center;
+}
+
+nav.navbar{
+    box-shadow: 4px 4px 3px #343a408f;
+    
 }
