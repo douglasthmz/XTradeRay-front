@@ -4,3 +4,30 @@ table{
     border-bottom-right-radius: 7px;
     box-shadow: 4px 6px 3px #343a408f;
 }
+#compra{
+    color: rgb(54, 255, 47);
+}
+#venda{
+    color: red;
+}
+td>button.btn{
+    align-content: center;
+    color:orange;
+    transition: all 0.3s linear;
+    width:90%;
+    
+}
+td>button.btn:hover{
+    width: 95%;
+    color: red;
+    background-color: rgb(255, 166, 0);
+    
+}
+
+
+#negativo{
+    color: red;
+}
+#positivo{
+    color: rgb(47, 255, 75);
+}

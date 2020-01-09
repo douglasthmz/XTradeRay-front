@@ -8,3 +8,6 @@
     font-size: 18px;
     position: sticky;
 }
+input.error {
+    border: 2px solid #FF6565;
+  }
