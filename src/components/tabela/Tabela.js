@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Table, Button } from 'react-bootstrap';
 import { parseISO, format } from 'date-fns';
-import { FaHotjar, FaSortNumericDown, FaSortNumericUp } from "react-icons/fa";
+import { FaHotjar } from "react-icons/fa";
 
 import './tabela.css';
 
@@ -41,10 +41,10 @@ export default class Tabela extends Component {
                                 idSaldo = "negativo";
                             }
 
-                            let Icon = FaSortNumericUp;
+                            let Icon = "C";
                             let idCss = "compra"
                             if (trade.tipo === 'venda') {
-                                Icon = FaSortNumericDown;
+                                Icon = "V";
                                 idCss = "venda";
                             }
 
