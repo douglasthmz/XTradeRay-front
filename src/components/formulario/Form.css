@@ -11,3 +11,6 @@
 input.error {
     border: 2px solid #FF6565;
   }
+select.error{
+    border: 2px solid #FF6565;
+}

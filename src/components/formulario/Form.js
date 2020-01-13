@@ -5,11 +5,34 @@ import { Container } from 'react-bootstrap';
 import './Form.css'
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import api from '../services/Api';
+
 
 class Formulario extends Component {
 
     constructor(props) {
         super(props);
+        this.insereTrade=this.insereTrade.bind(this);
+    }
+
+    async insereTrade(values){
+        let pontos = 0;
+        if(values.tipo === 'compra'){
+           pontos =JSON.stringify(parseInt(values.saida) - parseInt(values.entrada));
+        } else{
+           pontos =JSON.stringify(parseInt(values.entrada) -  parseInt(values.saida));
+        }
+
+        let saldo =JSON.stringify(pontos*parseInt(values.contratos)*0.2);
+
+        let data =new Date();
+
+        const tradeFull = {...values, pontos, saldo, data};
+
+        const res = await api.post('/trades', tradeFull);
+        console.log(res);
+        this.props.submit();
+        
     }
 
     render() {
@@ -28,6 +51,7 @@ class Formulario extends Component {
                 .max(4, "*Você não é o banco Itau!")
                 .required("*Coloque pelo menos 1 contrato"),
             tipo: Yup.string()
+                .required("*Escolha um valor")
 
         });
         return (
@@ -39,6 +63,8 @@ class Formulario extends Component {
                         onSubmit={(values, { setSubmitting, resetForm }) => {
                             // When button submits form and form is in the process of submitting, submit button is disabled
                             setSubmitting(true);
+
+                            this.insereTrade(values);
 
                             // Resets form after submission is complete
                             resetForm();
@@ -58,7 +84,6 @@ class Formulario extends Component {
 
                                 <form onSubmit={handleSubmit}>
                                     <Form>
-                                        {console.log(errors.entrada)}
                                         <Form.Row>
                                             <Form.Group as={Col} xs={6} md={3} controlId="entrada">
                                                 <Form.Label>Entrada</Form.Label>
@@ -106,7 +131,10 @@ class Formulario extends Component {
                                                     name="tipo"
                                                     onChange={handleChange}
                                                     onBlur={handleBlur}
-                                                    value={values.tipo}>
+                                                    value={values.tipo}
+                                                    className={touched.tipo && errors.tipo ? "error" : null}>
+                                                        
+                                                    <option value="" disabled hidden>Choose here</option>
                                                     <option value="compra">Compra</option>
                                                     <option value="venda">Venda</option>
                                                 </Form.Control>
