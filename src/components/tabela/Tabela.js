@@ -50,7 +50,7 @@ export default class Tabela extends Component {
 
                             return (
                                 <tr key={trade._id}>
-                                    <td><Icon id={idCss} /></td>
+                                    <td><span id={idCss}>{Icon}</span></td>
                                     <td>{trade.entrada}</td>
                                     <td>{trade.saida}</td>
                                     <td>{trade.pontos}</td>
