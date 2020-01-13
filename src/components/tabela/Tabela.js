@@ -36,8 +36,8 @@ export default class Tabela extends Component {
                                 "dd'/'MM'/'yyyy"
                             );
                             let idSaldo = "positivo";
-                            let saldo = parseFloat(trade.saldo);
-                            if (saldo <= 0) {
+                            let saldo = parseFloat(trade.saldo).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+                            if (saldo <= "0") {
                                 idSaldo = "negativo";
                             }
 
@@ -55,7 +55,7 @@ export default class Tabela extends Component {
                                     <td>{trade.saida}</td>
                                     <td>{trade.pontos}</td>
                                     <td>{trade.contratos}</td>
-                                    <td id={idSaldo}>{trade.saldo}</td>
+                                    <td id={idSaldo}>{saldo}</td>
                                     <td>{dataFormatada}</td>
                                     <td><Button onClick={ () => this.props.removeTradeporId(trade._id)} variant="outline-light"><FaHotjar /></Button></td>
                                 </tr>

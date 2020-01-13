@@ -134,7 +134,7 @@ class Formulario extends Component {
                                                     value={values.tipo}
                                                     className={touched.tipo && errors.tipo ? "error" : null}>
                                                         
-                                                    <option value="" disabled hidden>Choose here</option>
+                                                    <option value="" disabled hidden>...</option>
                                                     <option value="compra">Compra</option>
                                                     <option value="venda">Venda</option>
                                                 </Form.Control>
