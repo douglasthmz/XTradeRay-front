@@ -1,0 +1,18 @@
+span.upcase{
+    display: block;
+    position: relative;
+    font-size: 35px;
+    font-variant: initial;
+    color:rgb(255, 52, 16);
+    font-family: monospace;
+    animation: logo 4s infinite;
+    transform: rotateX(20deg);
+    
+}
+
+@keyframes logo{
+    from {text-shadow:2px 2px 2px limegreen;
+          color: red;}
+    to{text-shadow:-2px 2px 2px limegreen;
+          color:red;}
+}
