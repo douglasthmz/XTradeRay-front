@@ -14,21 +14,21 @@ class Formulario extends Component {
         super(props);
         this.insereTrade=this.insereTrade.bind(this);
     }
-
-    async insereTrade(values){
+    formataTrade = values =>{
         let pontos = 0;
         if(values.tipo === 'compra'){
            pontos =JSON.stringify(parseInt(values.saida) - parseInt(values.entrada));
         } else{
            pontos =JSON.stringify(parseInt(values.entrada) -  parseInt(values.saida));
         }
-
         let saldo =JSON.stringify(pontos*parseInt(values.contratos)*0.2);
-
         let data =new Date();
 
         const tradeFull = {...values, pontos, saldo, data};
-
+        return tradeFull;
+    }
+    async insereTrade(values){
+        const tradeFull = this.formataTrade(values);
         const res = await api.post('/trades', tradeFull);
         console.log(res);
         this.props.submit();
@@ -63,16 +63,12 @@ class Formulario extends Component {
                         onSubmit={(values, { setSubmitting, resetForm }) => {
                             // When button submits form and form is in the process of submitting, submit button is disabled
                             setSubmitting(true);
-
                             this.insereTrade(values);
-
                             // Resets form after submission is complete
                             resetForm();
-
                             // Sets setSubmitting to false after form is reset
                             setSubmitting(false);
                         }}>
-
                         {/* Callback function containing Formik state and helpers that handle common form actions */}
                         {({ values,
                             errors,
@@ -141,17 +137,12 @@ class Formulario extends Component {
                                             </Form.Group>
                                         </Form.Row>
                                         <Button variant="outline-light" type="submit" disabled={isSubmitting} xs={12} md={1}>Enviar Trade</Button>
-
                                     </Form>
                                 </form>
-
                             )}
                     </Formik>
-
                 </div>
             </Container>
-
-
         );
     }
 }

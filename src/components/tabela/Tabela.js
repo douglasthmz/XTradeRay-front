@@ -6,9 +6,6 @@ import { FaHotjar } from "react-icons/fa";
 import './tabela.css';
 
 export default class Tabela extends Component {
-    constructor(props){
-        super(props);
-    }
 
     render() {
         return (
